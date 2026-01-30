@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Featured Hotels</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#6d471f;padding-top:70px;display:flex;justify-content:center;}
+header{
+  width:100%;
+  height:52px;
+  background:linear-gradient(90deg,#B6873B,#b78a44);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  z-index:2000;
+}
+header img{width:42px;height:42px;border-radius:50%;}
+header{
+  width:100%;
+  height:52px;
+  background:linear-gradient(90deg,#B6873B,#b78a44);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  z-index:2000;
+}
+
+header img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+
+/* wrapper agar navbar tetap di tengah */
+.nav-center-wrapper{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.8px;
+  text-align:center;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#fff7d4;
+}
+.container{width:80%;text-align:center;}
+h1{color:#fff8e6;margin-bottom:30px;font-size:26px;}
+.hotel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;justify-items:center;}
+.hotel-card{
+  width:220px;
+  background:#8b5a24;
+  border-radius:4px;
+  color:white;
+  cursor:pointer;
+  transition:0.25s ease;
+  overflow:hidden;
+}
+.hotel-card img{width:100%;height:140px;object-fit:cover;}
+.hotel-card h3{font-size:14px;margin:8px 0;letter-spacing:0.5px;}
+.hotel-card p{font-size:11px;padding:0 10px 8px;opacity:0.9;line-height:1.3;}
+.hotel-card:hover{transform:translateY(-8px);box-shadow:0 8px 16px rgba(0,0,0,0.35);}
+.hotel-card:active{transform:scale(1.06) translateY(-5px);box-shadow:0 12px 22px rgba(0,0,0,0.35);}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header>
+  <img src="logo.jpeg" alt="logo">
+  <div class="nav-center-wrapper">
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="hotels.html" class="active">HOTELS</a>
+      <a href="offers.html">OFFERS</a>
+      <a href="testimoni.html">TESTIMONI</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  <h1>FEATURED HOTELS</h1>
+  <div class="hotel-grid">
+    <div class="hotel-card" onclick="goToDetail('sydney')">
+      <img src="hotel sydney.jpeg" alt="">
+      <h3>C Hotel Sydney</h3>
+      <p>Rating ★★★★★ • Sydney NSW, Australia</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('japan')">
+      <img src="hotel jepang.jpeg" alt="">
+      <h3>C Hotel Japan</h3>
+      <p>Rating ★★★★★ • Minato-ku, Tokyo, Japan</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('moscow')">
+      <img src="MOSCOW.jpeg" alt="">
+      <h3>C Hotel Moscow</h3>
+      <p>Rating ★★★★★ • Moscow, Russia</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('losangeles')">
+      <img src="hotel LA (1).jpeg" alt="">
+      <h3>C Hotel Los Angeles</h3>
+      <p>Rating ★★★★★ • Downtown LA, USA</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('dubai')">
+      <img src="hotel dubai.jpeg" alt="">
+      <h3>C Hotel Dubai</h3>
+      <p>Rating ★★★★★ • Dubai, UAE</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('qatar')">
+      <img src="hotel catar.jpeg" alt="">
+      <h3>C Hotel Qatar</h3>
+      <p>Rating ★★★★★ • Doha, Qatar</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('bali')">
+      <img src="hotel bali.jpeg" alt="">
+      <h3>C Hotel Bali</h3>
+      <p>Rating ★★★★★ • Kuta, Bali</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('paris')">
+      <img src="hotel paris.jpeg" alt="">
+      <h3>C Hotel Paris</h3>
+      <p>Rating ★★★★★ • Paris, France</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('beijing')">
+      <img src="hotel china.jpeg" alt="">
+      <h3>C Hotel Beijing</h3>
+      <p>Rating ★★★★★ • Chaoyang, Beijing</p>
+    </div>
+    <div class="hotel-card" onclick="goToDetail('cairo')">
+      <img src="hotel cairo.jpeg" alt="">
+      <h3>C Hotel Cairo</h3>
+      <p>Rating ★★★★★ • Cairo, Egypt</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function goToDetail(hotel){
+  window.location.href = "hotels.details.html?hotel=" + hotel;
+}
+</script>
+
+</body>
+</html>

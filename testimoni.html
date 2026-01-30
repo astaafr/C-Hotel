@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Hotel - Testimoni</title>
+
+<!-- FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Poppins, sans-serif;
+}
+
+body{
+    background:#6d471f;
+    color:white;
+    padding-top:52px; /* ruang untuk navbar */
+}
+
+/* ===================== NAVBAR (PERSIS DARI HOME) ===================== */
+
+header{
+  width:100%;
+  height:52px;
+  background:linear-gradient(90deg,#B6873B,#b78a44); /* GRADIENT SAMA */
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  z-index:2000;
+}
+
+header img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.nav-center-wrapper{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+nav{
+  display:flex;
+  gap:25px;  /* SAMA DENGAN HOME */
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500; 
+  font-size:14px;
+  letter-spacing:0.8px; /* PERSIS HOME */
+  text-align:center;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#fff7d4;
+}
+
+/* ========================= TITLE ========================= */
+
+.title{
+    text-align:center;
+    font-size:32px;
+    margin:30px 0 20px 0;
+}
+
+/* ========================= GRID CARD ========================= */
+
+.testimonial-container{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:25px;
+    padding-bottom:40px;
+}
+
+/* ========================= CARD ========================= */
+
+.card{
+    background:#c8a984;
+    padding:20px;
+    border-radius:10px;
+    color:white;
+    box-shadow:0 4px 10px rgba(0,0,0,0.3);
+
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.6s ease;
+}
+
+.card.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.profile{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+.name{
+    font-size:18px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- ========================= NAVBAR ========================= -->
+<header>
+    <img src="logo.jpeg" alt="logo">
+
+    <div class="nav-center-wrapper">
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="hotels.html">HOTELS</a>
+            <a href="offers.html">OFFERS</a>
+            <a href="testimoni.html">TESTIMONI</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ========================= TITLE ========================= -->
+<div class="title">- What Our Client Says -</div>
+
+<!-- ========================= CARD LIST ========================= -->
+<div class="testimonial-container">
+
+    <div class="card">
+        <img class="profile" src="dodot (2).jpg">
+        <div class="name">Doh Kyungsoo</div>
+        <p>“C Hotel Sydney keren banget! Pelayanannya ramah, kamarnya bersih, view-nya juga cakep parah. Pasti balik lagi sih!”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="kim jae won (3).jpeg">
+        <div class="name">Kim Jaewon</div>
+        <p>“Nginep di C Hotel Tokyo rasanya kayak jadi sultan. Semua serba rapi, staff-nya sopan, makanannya enak banget.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="cho young woo.jpeg">
+        <div class="name">Choo Young Woo</div>
+        <p>“C Hotel Doha mewah tapi tetep nyaman. Dekorasinya kece, pelayanannya mantap. Tiga malam berasa kurang!”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="soohe.jpeg">
+        <div class="name">Han Seo Hee</div>
+        <p>“Begitu masuk aja langsung dapet aura elegan khas Paris. Staff-nya ramah banget dan perhatian.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="cwe mijae.jpeg">
+        <div class="name">Yoon Ah Reum</div>
+        <p>“Abis seharian keliling kota dingin-dingin, masuk kamar yang hangat dan wangi tuh priceless banget.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="jihyun.jpeg">
+        <div class="name">Nam Ji Hyun</div>
+        <p>“Dari kamarnya bisa liat langsung Sungai Nil, dan itu keren banget pas sunrise. Interior-nya elegan.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="mijae.jpg">
+        <div class="name">Kim Min Jae</div>
+        <p>“Lobby-nya aja udah kayak red carpet, semuanya mewah tapi gak sombong. Staff-nya asik banget.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="yihyun.jpeg">
+        <div class="name">Cho Yihyun</div>
+        <p>“Kamarnya modern banget, bersih, dan tiap detail-nya niat. Breakfast-nya juga enak banget.”</p>
+    </div>
+
+    <div class="card">
+        <img class="profile" src="CHANYEOL 🍒❤️.jpeg">
+        <div class="name">Park Chanyoel</div>
+        <p>“Check-in disambut kayak royal family. Rooftop pool-nya gila sih, view Dubai dari atas luar biasa!”</p>
+    </div>
+
+</div>
+
+<!-- ========================= ANIMASI ========================= -->
+<script>
+const cards = document.querySelectorAll('.card');
+
+function revealCards() {
+    cards.forEach(card => {
+        let rect = card.getBoundingClientRect().top;
+        if(rect < window.innerHeight - 50){
+            card.classList.add("show");
+        }
+    });
+}
+
+window.addEventListener("scroll", revealCards);
+window.onload = revealCards;
+</script>
+
+</body>
+</html>

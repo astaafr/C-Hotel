@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C Hotel - Sign Up</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+    body {
+      background: url("Hotel & Resorts.png") center/cover no-repeat;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+    }
+    .container{
+      width:350px;
+      background: rgba(255,255,255,0.15);
+      padding:25px;
+      border-radius:20px;
+      text-align:center;
+      color:white;
+      backdrop-filter: blur(7px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+    }
+    .logo{width:70px;height:70px;border-radius:50%;background:#fcd88e;color:#ac6c09;
+      display:flex;justify-content:center;align-items:center;font-size:35px;margin:0 auto 15px;font-weight:bold;}
+    h2{margin-bottom:20px;font-size:22px;letter-spacing:2px;}
+    input{width:100%;padding:12px;margin-bottom:12px;border-radius:10px;border:none;outline:none;background:#ffd99d;color:black;}
+    .name-group{display:flex;gap:10px;}
+    button{width:100%;padding:12px;border:none;border-radius:20px;background:#ffb34d;color:white;font-weight:bold;font-size:15px;cursor:pointer;transition:0.3s;}
+    button:hover{background:#ff9900;}
+    .switch{margin-top:10px;}
+    .switch a{color:#ffe7b8;text-decoration:none;font-weight:bold;}
+    #popup{position:fixed;top:0;left:0;right:0;bottom:0;display:none;justify-content:center;align-items:center;backdrop-filter:blur(4px);}
+    .popup-box{background:#fff4d6;padding:25px 35px;border-radius:15px;box-shadow:0 5px 25px rgba(0,0,0,0.3);animation: pop 0.5s ease;}
+    @keyframes pop{from{transform:scale(0.6);opacity:0;}to{transform:scale(1);opacity:1;}}
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="logo">C</div>
+  <h2>SIGN UP</h2>
+  <div class="name-group">
+    <input type="text" id="first-name" placeholder="First name">
+    <input type="text" id="last-name" placeholder="Last name">
+  </div>
+  <input type="email" id="email" placeholder="Email">
+  <input type="password" id="signup-password" placeholder="Password">
+  <button id="signup-btn">SIGN UP</button>
+  <p class="switch">Already have an account? <a href="login.html">Login</a></p>
+</div>
+
+<div id="popup">
+  <div class="popup-box">
+    <h3 id="popup-text"></h3>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

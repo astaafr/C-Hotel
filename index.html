@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C Hotel - Home</title>
+
+<style>
+
+/* ========================= ANIMASI CARD ========================= */
+
+/* Fade in untuk room-card & voucher-card */
+@keyframes fadeInCard {
+  0% {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.room-card,
+.voucher-card {
+  opacity: 0;
+  animation: fadeInCard 0.9s ease forwards;
+}
+
+/* delay agar muncul satu per satu */
+.room-card:nth-child(1),
+.voucher-card:nth-child(1) { animation-delay: 0.1s; }
+.room-card:nth-child(2),
+.voucher-card:nth-child(2) { animation-delay: 0.25s; }
+.room-card:nth-child(3),
+.voucher-card:nth-child(3) { animation-delay: 0.4s; }
+
+/* ========================= GLOBAL STYLE ========================= */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:#f5f5f5;}
+
+/* ========================= NAVBAR SUPER SLIM ========================= */
+header{
+  width:100%;
+  height:52px;
+  background:linear-gradient(90deg,#B6873B,#b78a44);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  z-index:2000;
+}
+
+header img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+
+/* wrapper agar navbar tetap di tengah */
+.nav-center-wrapper{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.8px;
+  text-align:center;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#fff7d4;
+}
+
+/* ========================= HERO ========================= */
+.hero{
+  width:100%;
+  height:95vh;
+  background:url("cadangan hero.jpeg") center/cover no-repeat;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.hero .overlay{
+  position:absolute;width:100%;height:100%;
+  background:rgba(10,10,10,0.45);
+}
+.hero-content{
+  position:relative;text-align:center;color:white;margin-top:40px;
+}
+.hero-content h1{font-size:48px;font-weight:600;margin-bottom:10px;}
+.hero-content p{font-size:18px;letter-spacing:1px;margin-bottom:25px;}
+.explore-btn{
+  padding:12px 28px;
+  background:#ffd68b;
+  border:none;
+  border-radius:8px;
+  color:#705018;
+  font-weight:600;
+  cursor:pointer;
+  font-size:16px;
+  transition:0.3s;
+}
+.explore-btn:hover{background:#ffca61;}
+
+/* ========================= INFO PANEL ========================= */
+.info-panel{
+  display:flex;
+  justify-content:center;
+  gap:0;
+}
+
+.info-box{
+  flex:1;
+  padding:25px 15px;
+  text-align:center;
+  color:white;
+  font-weight:500;
+}
+
+.info-box:nth-child(1){ background:#c9a463; }
+.info-box:nth-child(2){ background:#b58a49; }
+.info-box:nth-child(3){ background:#9c7339; }
+
+.info-box h3{
+  font-size:15px;
+  font-weight:600;
+  margin-bottom:6px;
+}
+
+/* ========================= OUR ROOMS ========================= */
+.rooms{
+  padding:60px 50px;
+  background: url("our room.jpeg") center/cover no-repeat;
+  position: relative;
+}
+.rooms::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;bottom:0;
+  background: rgba(0,0,0,0.5);
+}
+.rooms h2{
+  text-align:center;
+  font-size:32px;
+  margin-bottom:45px;
+  color:#fff;
+  position:relative;
+  z-index:1;
+}
+.room-container{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  position:relative;
+  z-index:1;
+}
+.room-card{
+  width:300px;
+  background: rgba(255,255,255,0.1);
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 8px 20px rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+}
+.room-card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  filter: brightness(0.7);
+}
+.room-text{
+  padding:15px;
+  color:white;
+}
+.room-text h3{font-size:20px;margin-bottom:10px;font-weight:600;}
+.room-text p{font-size:14px;margin-bottom:12px;}
+.room-text button{
+  width:100%;
+  padding:10px 0;
+  border:none;
+  border-radius:6px;
+  background:#c69041;
+  color:white;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.3s;
+}
+.room-text button:hover{background:#b07a2d;}
+
+/* ========================= VOUCHER ========================= */
+.voucher {
+  background:#6d471f;
+  padding:60px 50px;
+  color:white;
+}
+
+.voucher h2 {
+  text-align:center;
+  font-size:32px;
+  margin-bottom:35px;
+}
+
+.voucher-wrapper {
+  display:flex;
+  justify-content:center;
+  gap:22px;
+}
+
+.voucher-card {
+  width:300px;
+  background:rgba(255,255,255,0.1);
+  padding:18px;
+  border-radius:14px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.4);
+  backdrop-filter: blur(4px);
+  text-align:center;
+  position:relative;
+}
+
+.voucher-card img {
+  width:100%;
+  height:180px;
+  border-radius:12px;
+  object-fit:cover;
+  margin-bottom:14px;
+}
+
+.circle-badge {
+  position:absolute;
+  top:12px;
+  right:12px;
+  background:#f7e0bc;
+  color:#74511d;
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:20px;
+  font-weight:700;
+}
+
+.voucher-card h3 {
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.voucher-card p {
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+.voucher-card button {
+  padding:10px 20px;
+  background:#ffe2aa;
+  color:#7d5419;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+.voucher-card button:hover {
+  background:#ffce7f;
+}
+
+/* ========================= POP UP VOUCHER ========================= */
+#voucher-popup{
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  background:rgba(0,0,0,0.6);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:3000;
+}
+.popup-content{
+  background:#fff7e2;
+  padding:35px 45px;
+  border-radius:14px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.3);
+  animation:popupShow 0.5s ease;
+  position:relative;
+}
+@keyframes popupShow{
+  from{transform:scale(0.7);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+.popup-content button{
+  margin-top:15px;
+  padding:10px 25px;
+  background:#d8a24a;
+  border:none;
+  border-radius:6px;
+  color:white;
+  font-weight:600;
+  cursor:pointer;
+}
+#close-popup{
+  position:absolute;
+  top:10px;
+  right:14px;
+  font-size:20px;
+  cursor:pointer;
+}
+
+/* ========================= CARD PRESS EFFECT ========================= */
+.card-press {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+.card-press:active {
+  transform: scale(1.05);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.35);
+}
+
+/* ========================= FLOATING ANIMATION (BARU DITAMBAH) ========================= */
+
+@keyframes floatCard {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.room-card,
+.voucher-card {
+  animation: fadeInCard 0.9s ease forwards,
+             floatCard 4s ease-in-out infinite;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <img src="logo.jpeg" alt="logo">
+
+    <div class="nav-center-wrapper">
+        <nav>
+            <a href="home.html">HOME</a>
+            <a href="hotels.html">HOTELS</a>
+            <a href="offers.html">OFFERS</a>
+            <a href="testimoni.html">TESTIMONI</a>
+        </nav>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<div class="overlay"></div>
+<div class="hero-content">
+<h1>Welcome To C Hotel</h1>
+<p>The Place Where You Looking To</p>
+<button class="explore-btn">EXPLORE</button>
+</div>
+</section>
+
+<!-- INFO PANEL -->
+<section class="info-panel">
+<div class="info-box"><h3>OPENING TIMES</h3><p>10:00 AM - 10:00 PM</p></div>
+<div class="info-box"><h3>OUR LOCATION</h3><p>20 S Main St, Los Angeles, CA</p></div>
+<div class="info-box"><h3>CUSTOMER SUPPORT</h3><p>+200 999 876</p></div>
+</section>
+
+<!-- OUR ROOMS -->
+<section class="rooms">
+<h2>OUR ROOMS</h2>
+<div class="room-container">
+
+<div class="room-card card-press">
+<img src="img1.jpeg">
+<div class="room-text">
+<h3>STANDARD ROOM</h3>
+<p>Modern classic room hospitality concepts mixed with authenticity.</p>
+<button>BOOK NOW FOR $39</button>
+</div>
+</div>
+
+<div class="room-card card-press">
+<img src="our room.jpeg">
+<div class="room-text">
+<h3>DELUXE ROOM</h3>
+<p>Experience luxurious comfort designed with the best facilities.</p>
+<button>BOOK NOW FOR $49</button>
+</div>
+</div>
+
+<div class="room-card card-press">
+<img src="Luxury Hotel Bedroom Design _ Hotel Bedroom Layout _ Hotel Bedroom Decor _ White Bedroom Decorating.jpeg">
+<div class="room-text">
+<h3>PREMIER ROOM</h3>
+<p>A premium stay with exclusive amenities & city views.</p>
+<button>BOOK NOW FOR $59</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- VOUCHER -->
+<section class="voucher">
+<h2>HAPPY VOUCHER</h2>
+
+<div class="voucher-wrapper">
+
+  <div class="voucher-card card-press">
+    <img src="Luxury Hotel Bedroom Design _ Hotel Bedroom Layout _ Hotel Bedroom Decor _ White Bedroom Decorating.jpeg">
+    <div class="circle-badge">20%</div>
+    <h3>Luxury Discount</h3>
+    <p>Special room discount for your best stay.</p>
+    <button>BOOK NOW</button>
+  </div>
+
+  <div class="voucher-card card-press">
+    <img src="Seda Hotel Centrio_ The Perfect Epitome of Class, Elegance, Modernity.jpeg">
+    <div class="circle-badge">40%</div>
+    <h3>Couple Package</h3>
+    <p>Enjoy the perfect experience for two.</p>
+    <button>BOOK NOW</button>
+  </div>
+
+  <div class="voucher-card card-press">
+    <img src="our room.jpeg">
+    <div class="circle-badge">30%</div>
+    <h3>Weekend Promo</h3>
+    <p>Relax and refresh with our weekend offer.</p>
+    <button>BOOK NOW</button>
+  </div>
+
+</div>
+</section>
+
+<!-- POPUP -->
+<div id="voucher-popup">
+<div class="popup-content">
+<h2>🎉 Special Voucher For You!</h2>
+<p>Get <strong>50% OFF</strong> for your first booking.</p>
+<button id="claim-btn">CLAIM NOW</button>
+<span id="close-popup">✖</span>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

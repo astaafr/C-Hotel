@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>C Hotel — Details</title>
+
+<!-- Google font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#6d471f;
+    --gold:#caa05b;
+    --card:#a57a3f;
+    --card-2:#b88b47;
+    --accent:#ffe09c;
+    --white:#f9f5ef;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--white);
+    padding-top:76px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* NAV */
+header{
+  width:100%;
+  height:52px;
+  background:linear-gradient(90deg,#B6873B,#b78a44);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 32px;
+  position:fixed;
+  top:0;
+  z-index:2000;
+}
+
+header img{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+}
+
+/* wrapper agar navbar tetap di tengah */
+.nav-center-wrapper{
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+nav{
+  display:flex;
+  gap:25px;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:0.8px;
+  text-align:center;
+  transition:0.3s;
+}
+
+nav a:hover{
+  color:#fff7d4;
+}
+
+  /* MAIN LAYOUT */
+  .wrap{
+    width:92%;
+    max-width:1200px;
+    margin:18px auto 80px;
+    display:grid;
+    grid-template-columns: 1fr 420px;
+    gap:34px;
+    align-items:start;
+  }
+
+  /* LEFT column (gallery & content) */
+  .left{
+    background:transparent;
+  }
+
+  .gallery{
+    display:flex; gap:18px;
+    align-items:flex-start;
+  }
+  .main-photo{
+    flex:1 1 auto;
+    border-radius:12px;
+    overflow:hidden;
+    height:300px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  }
+  .main-photo img{width:100%; height:100%; object-fit:cover; display:block}
+
+  .thumbs{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    width:180px;
+  }
+  .thumbs img{
+    width:100%; height:92px; object-fit:cover; border-radius:10px;
+    cursor:pointer;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    border:3px solid transparent;
+  }
+  .thumbs img:hover{border-color:rgba(255,255,255,0.12)}
+
+  .info{
+    margin-top:18px;
+  }
+  .hotel-title{
+    font-size:34px; font-weight:700; letter-spacing:2px; margin-bottom:6px;
+  }
+  .hotel-location{font-size:14px; opacity:0.9; margin-bottom:12px}
+  .tags{display:flex; gap:10px; margin:12px 0;}
+  .tags .tag{background:var(--gold); color:#1d0f00; padding:6px 12px; border-radius:20px; font-weight:600; font-size:13px}
+
+  .desc{
+    background:transparent;
+    color:var(--white);
+    margin-top:12px;
+    line-height:1.5; width:95%;
+  }
+
+  /* RIGHT column (booking card) */
+  .card{
+    background:var(--card);
+    border-radius:14px;
+    padding:18px;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.35);
+    color:#fff;
+  }
+  .price-row{display:flex; justify-content:space-between; align-items:center; gap:8px}
+  .price-row .price{font-size:22px; font-weight:700}
+  .discount{background:var(--accent); color:#553600; padding:6px 9px; border-radius:8px; font-weight:600; font-size:13px}
+
+  .field{margin-top:12px}
+  label{display:block; font-size:13px; margin-bottom:6px; color:#fff; opacity:0.95}
+  input[type="date"], input[type="number"], input[type="text"]{
+    width:100%; padding:10px; border-radius:8px; border:none; outline:none;
+    font-size:14px;
+  }
+
+  .extras{
+    margin-top:14px;
+    background:var(--card-2);
+    padding:12px;
+    border-radius:10px;
+    color:#fff;
+  }
+  .extras .row{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; font-weight:600}
+
+  .total-row{display:flex; justify-content:space-between; align-items:center; margin-top:12px; font-weight:700; font-size:18px}
+  .payment-icons{display:flex; gap:8px; margin-top:10px; align-items:center}
+  .payment-icons img{width:45px; height:auto; object-fit:contain; border-radius:6px; background:#fff; padding:6px}
+
+  .pay-row{display:flex; gap:8px; margin-top:12px}
+  .promo{flex:1; background:#f0e6cf; color:#3a2b18; border-radius:8px; padding:8px; border:none}
+  .pay-btn{background:#0b0b0b; color:#fff; padding:10px 18px; border-radius:8px; border:none; cursor:pointer; font-weight:700}
+
+  /* small responsive*/
+  @media (max-width:980px){
+    .wrap{grid-template-columns:1fr; padding-bottom:40px}
+    .thumbs{flex-direction:row; width:100%; height:auto}
+    .thumbs img{width:32%; height:90px}
+    .main-photo{height:260px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="leftnav">
+    <img src="logo.jpeg" alt="logo" class="logo">
+  </div>
+  <nav class="center">
+    <a href="index.html">HOME</a>
+    <a href="hotels.html">HOTELS</a>
+    <a href="offers.html">OFFERS</a>
+    <a href="testimoni.html">TESTIMONI</a>
+  </nav>
+  <div style="width:44px"></div>
+</header>
+
+<main class="wrap">
+
+  <!-- LEFT: gallery + info -->
+  <section class="left">
+    <div class="gallery">
+      <div class="main-photo">
+        <img id="mainImg" src="" alt="hotel main">
+      </div>
+
+      <div class="thumbs">
+        <img id="thumb1" src="" alt="thumb1">
+        <img id="thumb2" src="" alt="thumb2">
+        <img id="thumb3" src="" alt="thumb3">
+      </div>
+    </div>
+
+    <div class="info">
+      <div class="hotel-title" id="hotelName">C Hotel Cairo</div>
+      <div class="hotel-location" id="hotelLocation">Corniche El Nil, Cairo, Egypt</div>
+
+      <div class="tags">
+        <div class="tag">Minimalist</div>
+        <div class="tag">Tropic</div>
+        <div class="tag">Private Pool</div>
+      </div>
+
+      <p class="desc" id="hotelDesc">Authentic Egyptian experience.</p>
+    </div>
+  </section>
+
+  <!-- RIGHT: booking card -->
+  <aside class="card">
+    <div class="price-row">
+      <div class="price">$300 <span style="font-weight:500;font-size:13px">/ night</span></div>
+      <div class="discount">10% Off</div>
+    </div>
+
+    <div class="field">
+      <label for="checkin">Check In</label>
+      <input type="date" id="checkin">
+    </div>
+
+    <div class="field">
+      <label for="checkout">Check Out</label>
+      <input type="date" id="checkout">
+    </div>
+
+    <div class="field" style="display:flex; gap:10px">
+      <div style="flex:1">
+        <label for="adults">Adults</label>
+        <input type="number" id="adults" min="1" value="1">
+      </div>
+      <div style="width:110px">
+        <label for="children">Children</label>
+        <input type="number" id="children" min="0" value="0">
+      </div>
+    </div>
+
+    <div class="extras">
+      <div style="font-weight:700;margin-bottom:8px">Extra Service</div>
+      <div class="row"><span>Room Clean</span><label><input id="clean" type="checkbox"> $12/Night</label></div>
+      <div class="row"><span>Breakfast</span><label><input id="breakfast" type="checkbox"> $7</label></div>
+      <div class="row"><span>Spa</span><label><input id="spa" type="checkbox"> $50</label></div>
+    </div>
+
+    <div class="total-row">
+      <div>Total Cost:</div>
+      <div id="totalCost">$0</div>
+    </div>
+
+    <div class="payment-icons" style="margin-top:14px">
+      <img src="visa.jpeg" alt="visa">
+      <img src="Mastercard.jpeg" alt="mc">
+      <img src="Stripe Logo.jpeg" alt="stripe">
+      <img src="america express.jpeg" alt="amex">
+    </div>
+
+    <div class="pay-row">
+      <input placeholder="Promo Code" class="promo" id="promo">
+      <button class="pay-btn" id="payBtn">Pay Now</button>
+    </div>
+  </aside>
+
+</main>
+
+<!-- modal -->
+<div id="modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;z-index:2000;">
+  <div style="background:#fff;padding:20px;border-radius:12px;width:340px;text-align:center;color:#1d1d1d">
+    <h3 id="modalTitle">Booking Confirmed</h3>
+    <p id="modalBody">Thank you — your booking was successful.</p>
+    <button id="modalOk" style="margin-top:12px;padding:10px 16px;background:var(--card);color:#fff;border:none;border-radius:8px;cursor:pointer">OK</button>
+  </div>
+</div>
+
+<script>
+/* ============ hotelData (from you) ============ */
+const hotelData = {
+  sydney: {
+    name: "C Hotel Sydney",
+    location: "Sydney NSW, Australia",
+    img: "hotel sydney.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Discover a refined escape at C Hotel Sydney."
+  },
+  japan: {
+    name: "C Hotel Japan",
+    location: "Minato-ku, Tokyo, Japan",
+    img: "hotel jepang.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Japanese modern comfort with classic hospitality."
+  },
+  moscow: {
+    name: "C Hotel Moscow",
+    location: "Moscow, Russia",
+    img: "hotel bali.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Luxury experience in the heart of Moscow."
+  },
+  losangeles: {
+    name: "C Hotel Los Angeles",
+    location: "Downtown LA, USA",
+    img: "hotel LA (1).jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Modern and stylish hotel in Los Angeles."
+  },
+  dubai: {
+    name: "C Hotel Dubai",
+    location: "Dubai, UAE",
+    img: "hotel dubai.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Futuristic luxury in Dubai."
+  },
+  qatar: {
+    name: "C Hotel Qatar",
+    location: "Doha, Qatar",
+    img: "hotel catar.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Premium Arabian elegance in Qatar."
+  },
+  bali: {
+    name: "C Hotel Bali",
+    location: "Kuta, Bali",
+    img: "hotel bali.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "A tropical escape in Bali."
+  },
+  paris: {
+    name: "C Hotel Paris",
+    location: "Paris, France",
+    img: "hotel paris.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Timeless Parisian elegance."
+  },
+  beijing: {
+    name: "C Hotel Beijing",
+    location: "Chaoyang, Beijing",
+    img: "hotel china.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Modern luxury in Beijing."
+  },
+  cairo: {
+    name: "C Hotel Cairo",
+    location: "Cairo, Egypt",
+    img: "hotel cairo.jpeg",
+    img1: "img1.jpeg", img2: "img2.jpeg", img3: "img3.jpeg",
+    desc: "Authentic Egyptian experience."
+  }
+};
+
+/* ============ load hotel based on URL (default cairo) ============ */
+const params = new URLSearchParams(window.location.search);
+const hotelKey = params.get('hotel') || 'cairo';
+const hotel = hotelData[hotelKey] || hotelData['cairo'];
+
+/* set UI content */
+document.getElementById('hotelName').textContent = hotel.name;
+document.getElementById('hotelLocation').textContent = hotel.location;
+document.getElementById('hotelDesc').textContent = hotel.desc;
+
+/* set images */
+const mainImg = document.getElementById('mainImg');
+const thumb1 = document.getElementById('thumb1');
+const thumb2 = document.getElementById('thumb2');
+const thumb3 = document.getElementById('thumb3');
+
+mainImg.src = hotel.img;
+thumb1.src = hotel.img1;
+thumb2.src = hotel.img2;
+thumb3.src = hotel.img3;
+
+/* thumbnail click */
+thumb1.addEventListener('click', ()=> mainImg.src = hotel.img1);
+thumb2.addEventListener('click', ()=> mainImg.src = hotel.img2);
+thumb3.addEventListener('click', ()=> mainImg.src = hotel.img3);
+
+/* ============ pricing logic ============ */
+const PRICE_PER_NIGHT = 300; // you can override per-hotel by adding price in hotelData if desired
+const CLEAN_PER_NIGHT = 12;
+const BREAKFAST_FEE = 7; // fixed per booking in this version
+const SPA_FEE = 50;      // fixed per booking
+
+const checkinEl = document.getElementById('checkin');
+const checkoutEl = document.getElementById('checkout');
+const adultsEl = document.getElementById('adults');
+const childrenEl = document.getElementById('children');
+const cleanEl = document.getElementById('clean');
+const breakfastEl = document.getElementById('breakfast');
+const spaEl = document.getElementById('spa');
+const totalCostEl = document.getElementById('totalCost');
+
+function calcNights(ci, co){
+  if(!ci || !co) return 0;
+  const s = new Date(ci);
+  const e = new Date(co);
+  const diff = (e - s) / (1000*60*60*24);
+  if(isNaN(diff) || diff < 1) return 0;
+  return Math.floor(diff);
+}
+
+function formatMoney(n){
+  // USD style with comma separators, adapt as needed
+  return '$' + n.toLocaleString('en-US');
+}
+
+function updateTotal(){
+  const ci = checkinEl.value;
+  const co = checkoutEl.value;
+  if(!ci || !co){
+    totalCostEl.textContent = formatMoney(0);
+    return;
+  }
+
+  const nights = calcNights(ci, co);
+  if(nights === 0){
+    totalCostEl.textContent = 'Invalid dates';
+    return;
+  }
+
+  let total = PRICE_PER_NIGHT * nights;
+
+  // extras
+  if(cleanEl.checked) total += CLEAN_PER_NIGHT * nights;
+  if(breakfastEl.checked) total += BREAKFAST_FEE; // breakfast fixed
+  if(spaEl.checked) total += SPA_FEE;
+
+  totalCostEl.textContent = formatMoney(total);
+}
+
+/* event listeners to update in real-time */
+[checkinEl, checkoutEl, adultsEl, childrenEl, cleanEl, breakfastEl, spaEl].forEach(el=>{
+  el.addEventListener('change', updateTotal);
+  el.addEventListener('input', updateTotal);
+});
+
+/* set min dates: checkin min = today, checkout min = tomorrow upon selection */
+const today = new Date();
+const yyyy = today.getFullYear();
+const mm = String(today.getMonth()+1).padStart(2,'0');
+const dd = String(today.getDate()).padStart(2,'0');
+const minDate = `${yyyy}-${mm}-${dd}`;
+checkinEl.min = minDate;
+
+/* when checkin changes, set checkout min to next day */
+checkinEl.addEventListener('change', ()=>{
+  if(!checkinEl.value) return;
+  const s = new Date(checkinEl.value);
+  const next = new Date(s.getTime() + 24*3600*1000);
+  const y = next.getFullYear();
+  const m = String(next.getMonth()+1).padStart(2,'0');
+  const d = String(next.getDate()).padStart(2,'0');
+  checkoutEl.min = `${y}-${m}-${d}`;
+  // if checkout is earlier than new min, clear it
+  if(checkoutEl.value && new Date(checkoutEl.value) <= s){
+    checkoutEl.value = '';
+  }
+  updateTotal();
+});
+
+/* pay button -> modal */
+const payBtn = document.getElementById('payBtn');
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modalTitle');
+const modalBody = document.getElementById('modalBody');
+const modalOk = document.getElementById('modalOk');
+
+payBtn.addEventListener('click', ()=>{
+  const ci = checkinEl.value;
+  const co = checkoutEl.value;
+  if(!ci || !co){
+    modalTitle.textContent = 'Incomplete';
+    modalBody.textContent = 'Please select both check-in and check-out dates.';
+    modal.style.display = 'flex';
+    return;
+  }
+  const nights = calcNights(ci, co);
+  if(nights === 0){
+    modalTitle.textContent = 'Invalid dates';
+    modalBody.textContent = 'Check-out must be after check-in (at least 1 night).';
+    modal.style.display = 'flex';
+    return;
+  }
+  updateTotal();
+  modalTitle.textContent = 'Booking Successful';
+  modalBody.innerHTML = `Your booking at <strong>${hotel.name}</strong> for <strong>${nights}</strong> night(s) is confirmed.<br>Total: <strong>${totalCostEl.textContent}</strong>`;
+  modal.style.display = 'flex';
+});
+
+/* close modal */
+modalOk.addEventListener('click', ()=> modal.style.display='none');
+
+/* init */
+updateTotal();
+</script>
+</body>
+</html>

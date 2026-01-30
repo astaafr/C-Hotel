@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Special Offers</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;} body{padding-top:70px;} header{width:100%;height:52px;background:linear-gradient(90deg,#B6873B,#b78a44);display:flex;align-items:center;justify-content:space-between;padding:0 32px;position:fixed;top:0;z-index:2000;} header img{width:42px;height:42px;border-radius:50%;} .nav-center-wrapper{position:absolute;left:50%;transform:translateX(-50%);} nav{display:flex;gap:25px;} nav a{color:white;text-decoration:none;font-weight:500;font-size:14px;letter-spacing:0.8px;text-align:center;transition:0.3s;} nav a:hover{color:#fff7d4;}
+ body {
+   margin: 0;
+   padding: 0;
+   font-family: serif;
+   background-color: #6d471f;
+   color: white;
+ }
+ header {
+   background-color: #c6a667;
+   padding: 10px 0;
+   text-align: center;
+   font-size: 20px;
+   letter-spacing: 2px;
+ }
+ .container {
+   width: 90%;
+   margin: auto;
+   padding-top: 20px;
+ }
+ h2 {
+   text-align: center;
+   font-weight: 300;
+   letter-spacing: 3px;
+ }
+ .grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+   gap: 25px;
+   margin-top: 30px;
+ }
+ .card {
+   background-color: #2c2923;
+   border-radius: 8px;
+   overflow: hidden;
+   cursor: pointer;
+   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+ }
+ .card:hover {
+   transform: scale(1.06);
+ }
+ .card:active {
+   transform: scale(1.1);
+ }
+ .card:hover {
+   transform: scale(1.05);
+ }
+ .card:active {
+   transform: scale(1.08);
+ }
+ .card img {
+   width: 100%;
+   height: 200px;
+   object-fit: cover;
+ }
+ .card-content {
+   padding: 15px;
+ }
+ .hotel {
+   font-size: 14px;
+   opacity: 0.8;
+ }
+ .title {
+   margin: 5px 0;
+   font-size: 18px;
+   font-weight: bold;
+ }
+ .desc {
+   font-size: 14px;
+   opacity: 0.8;
+   margin-bottom: 15px;
+ }
+ button {
+   background-color: #c6a667;
+   border: none;
+   padding: 8px 15px;
+   color: black;
+   cursor: pointer;
+   border-radius: 4px;
+   font-weight: bold;
+ }
+ .zoomed {
+   transform: scale(1.08);
+ }
+</style>
+</head>
+<body>
+<header>
+  <img src="logo.jpeg" alt="logo">
+  <div class="nav-center-wrapper">
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="hotels.html">HOTELS</a>
+      <a href="offers.html">OFFERS</a>
+      <a href="testimoni.html">TESTIMONI</a>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+ <h2>SPECIAL OFFERS</h2>
+
+ <div class="grid">
+   <!-- Card 1 -->
+   <div class="card">
+     <img src="table manner.jpeg" />
+     <div class="card-content">
+       <div class="hotel">C Hotel Japan</div>
+       <div class="title">TABLE MANNER</div>
+       <div class="desc">Master the Art of Dining with Our Exclusive Table Manner Packages</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+
+   <!-- Card 2 -->
+   <div class="card">
+     <img src="gather glow.jpeg" />
+     <div class="card-content">
+       <div class="hotel">C Hotel Moscow</div>
+       <div class="title">GATHER & GLOW</div>
+       <div class="desc">Intimate lunch or dinner celebration at Asian Geysha with radiant ambiance.</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+
+   <!-- Card 3 -->
+   <div class="card">
+     <img src="extra night.jpeg" />
+     <div class="card-content">
+       <div class="hotel">10 Hotels</div>
+       <div class="title">EXTRA NIGHT ON US</div>
+       <div class="desc">Stay another night at no extra cost.</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+
+   <!-- Card 4 -->
+   <div class="card">
+     <img src="best picks.jpeg" />
+     <div class="card-content">
+       <div class="hotel"> Hotels</div>
+       <div class="title">BEST PICKS</div>
+       <div class="desc">Complimentary and handpicked perks.</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+
+   <!-- Card 5 -->
+   <div class="card">
+     <img src="6fdcdf96-805c-490d-b082-dfc701ec28c8.jpeg" />
+     <div class="card-content">
+       <div class="hotel">C Hotel Dubai</div>
+       <div class="title">15TH ANNIVERSARY SALE</div>
+       <div class="desc">Enjoy up to 15% OFF + Free Breakfast + Food and beverage credit this September.</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+
+   <!-- Card 6 -->
+   <div class="card">
+     <img src="explore more.jpeg" />
+     <div class="card-content">
+       <div class="hotel">C Hotel Beijing</div>
+       <div class="title">EXPLORE MORE, PAY LESS</div>
+       <div class="desc">Explore more, pay less! 35% OFF + free selected cocktails.</div>
+       <button>LEARN MORE</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<script>
+ document.querySelectorAll('.card').forEach(card => {
+   card.addEventListener('click', () => {
+     card.classList.add('zoomed');
+     setTimeout(() => card.classList.remove('zoomed'), 300);
+   });
+ });
+</script>
+
+</body>
+</html>
